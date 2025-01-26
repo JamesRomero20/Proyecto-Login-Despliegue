@@ -84,7 +84,13 @@ jobs:
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: https://jamesromero20.github.io/Proyecto-Login-Despliegue/
-         
+          output_path: ./lighthouse-report
+      
+      - name: Subir Reporte Lighthouse
+        uses: actions/upload-artifact@v3
+        with:
+            name: lighthouse-report
+            path: ./lighthouse-report/*
           
       - name: Escaneo ZAP
         uses: zaproxy/action-full-scan@v0.12.0
