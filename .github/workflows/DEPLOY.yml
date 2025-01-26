@@ -93,13 +93,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: https://jamesromero20.github.io/Proyecto-Login-Despliegue/
-      
-      - name: Subir Reporte Lighthouse
-        uses: actions/upload-artifact@v3
-        with:
-          name: lighthouse-report
-          path: ./lighthouse-report/*
-          
+     
       - name: Ejecutar prueba de carga Apache Benchmark
         run: |
           ab -n 100 -c 10 https://jamesromero20.github.io/Proyecto-Login-Despliegue/
@@ -111,12 +105,6 @@ jobs:
         env:
           JAVA_OPTS: "-Xmx512m"
       
-      - name: Reporte ZAP
-        uses: actions/upload-artifact@v3
-        with:
-            name: dast-report
-            path: report-report.html
-
       - name: Despliegue a GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
