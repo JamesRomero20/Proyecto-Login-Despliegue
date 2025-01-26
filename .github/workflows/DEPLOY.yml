@@ -93,6 +93,12 @@ jobs:
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: https://jamesromero20.github.io/Proyecto-Login-Despliegue/
+      
+      - name: Subir Reporte Lighthouse
+        uses: actions/upload-artifact@v3
+        with:
+          name: lighthouse-report
+          path: ./lighthouse-report/*
           
       - name: Ejecutar prueba de carga Apache Benchmark
         run: |
