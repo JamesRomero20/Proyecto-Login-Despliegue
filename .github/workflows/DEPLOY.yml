@@ -80,11 +80,6 @@ jobs:
         with:
          node-version: "16"  
 
-      - name: Pruebas Unitarias
-        run: |
-           npm install
-           npm test   
-      
       - name: Pruebas de cobertura
         run: |
              npm run coverage
