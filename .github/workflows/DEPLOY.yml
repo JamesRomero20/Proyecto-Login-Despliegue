@@ -94,12 +94,9 @@ jobs:
         with:
           urls: https://jamesromero20.github.io/Proyecto-Login-Despliegue/
           
-      - name: Instalacion de Artillery
-        run: npm install -g artillery
-
-      - name: Ejecutar prueba de carga
+      - name: Ejecutar prueba de carga Apache Benchmark
         run: |
-          artillery quick --duration 30s --rate 10 -n 10 https://jamesromero20.github.io/Proyecto-Login-Despliegue/
+          ab -n 100 -c 10 https://jamesromero20.github.io/Proyecto-Login-Despliegue/
 
       - name: Escaneo ZAP
         uses: zaproxy/action-full-scan@v0.12.0
