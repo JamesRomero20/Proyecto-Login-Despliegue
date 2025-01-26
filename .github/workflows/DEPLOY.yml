@@ -80,9 +80,15 @@ jobs:
         with:
          node-version: "20"  
       
+      - name: Comprobación del cumplimiento de la licencia
+        uses: mikaelvesavuori/license-compliance-action@v1
+        with:
+           allow_licenses: "https://www.mockachino.com/{{MIT;ISC;0BSD;BSD-2-Clause;BSD-3-Clause;Apache-2.0}}/licenses"
+           nested_field: "licenseString"
+
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Analisis de desempeño Lighthouse 
         uses: treosh/lighthouse-ci-action@v9
         with:
