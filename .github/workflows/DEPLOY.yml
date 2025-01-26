@@ -75,25 +75,46 @@ jobs:
     needs: build
     steps:
 
-      - name: Setup Node.js
+      - name: Configuracion Node.js
         uses: actions/setup-node@v3
         with:
          node-version: "16" 
       
-      - name: ZAP Scan
+      - name: Validacion del Build
+        run: |
+           npm install
+           npm run build
+       
+
+      - name: Pruebas Unitarias
+        run: |
+           npm install
+           npm test   
+      
+      - name: Pruebas de cobertura
+        run: |
+             npm run coverage
+       
+      - name: Reporte de cobertura
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/
+
+      - name: Escaneo ZAP
         uses: zaproxy/action-full-scan@v0.12.0
         with:
          target: "https://jamesromero20.github.io/Proyecto-Login-Despliegue/"
         env:
           JAVA_OPTS: "-Xmx512m"
       
-      - name: Upload ZAP Report
+      - name: Reporte ZAP
         uses: actions/upload-artifact@v3
         with:
             name: dast-report
             path: report-report.html
 
-      - name: Deploy to GitHub Pages
+      - name: Despliegue a GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
