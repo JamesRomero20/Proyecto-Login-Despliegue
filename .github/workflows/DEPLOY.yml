@@ -93,7 +93,14 @@ jobs:
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: https://jamesromero20.github.io/Proyecto-Login-Despliegue/
-         
+          
+      - name: Instalacion de Artillery
+        run: npm install -g artillery
+
+      - name: Ejecutar prueba de carga
+        run: |
+          artillery quick --duration 30s --rate 10 -n 10 https://jamesromero20.github.io/Proyecto-Login-Despliegue/
+
       - name: Escaneo ZAP
         uses: zaproxy/action-full-scan@v0.12.0
         with:
