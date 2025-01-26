@@ -79,6 +79,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
          node-version: "20"  
+      
+      - name: Instalar dependencias para Chrome
+        run: |
+           sudo apt-get update
+           sudo apt-get install -y libatk-bridge2.0-0 libgtk-3-0 libgbm-dev
        
       - name: Lighthouse Performance Audit
         run: npx lighthouse https://jamesromero20.github.io/Proyecto-Login-Despliegue/ --output html --output-path ./lighthouse-report.html
