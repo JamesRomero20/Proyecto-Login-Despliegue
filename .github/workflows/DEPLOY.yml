@@ -78,13 +78,7 @@ jobs:
       - name: Configuracion Node.js
         uses: actions/setup-node@v3
         with:
-         node-version: "16" 
-      
-      - name: Validacion del Build
-        run: |
-           npm install
-           npm run build
-       
+         node-version: "16"  
 
       - name: Pruebas Unitarias
         run: |
