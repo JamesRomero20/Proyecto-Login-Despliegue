@@ -78,7 +78,7 @@ jobs:
       - name: Configuracion Node.js
         uses: actions/setup-node@v3
         with:
-         node-version: "16"  
+         node-version: "20"  
        
       - name: Lighthouse Performance Audit
         run: npx lighthouse https://jamesromero20.github.io/Proyecto-Login-Despliegue/ --output html --output-path ./lighthouse-report.html
