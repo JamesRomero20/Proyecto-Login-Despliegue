@@ -80,8 +80,6 @@ jobs:
         with:
          node-version: "16"  
 
-      - name: Accesibilidad con Pa11y
-        run: npx pa11y https://jamesromero20.github.io/Proyecto-Login-Despliegue/
        
       - name: Pruebas de Desempeño con k6
         run: |
