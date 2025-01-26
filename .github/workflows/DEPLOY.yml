@@ -85,7 +85,14 @@ jobs:
          target: "https://jamesromero20.github.io/Proyecto-Login-Despliegue/"
         env:
           JAVA_OPTS: "-Xmx512m"
+      
+      - name: Upload ZAP Report
+        uses: actions/upload-artifact@v3
+        with:
+            name: dast-report
+            path: report-report.html
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
