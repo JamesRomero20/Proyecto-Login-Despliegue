@@ -85,7 +85,13 @@ jobs:
         with:
           urls: https://jamesromero20.github.io/Proyecto-Login-Despliegue/
          
-      
+      - name: Ejecutar Lighthouse
+         run: |
+            npx lighthouse https://jamesromero20.github.io/Proyecto-Login-Despliegue/ \
+              --output html \
+              --output-path ./lighthouse-report.html \
+              --chrome-flags="--headless --disable-gpu --no-sandbox"
+        
       - name: Validación de SEO
         run: npx lighthouse --only-categories=seo https://jamesromero20.github.io/Proyecto-Login-Despliegue/ --output html --output-path ./seo-report.html
         
